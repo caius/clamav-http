@@ -41,7 +41,7 @@ func RunHTTPListener(clamd_address string, port int, max_file_mem int64, logger 
 		Max_file_mem: max_file_mem,
 		Logger:       logger,
 	})
-	logger.Infof("Starting the webserver on port %v", port)
+	logger.Infof("Starting the webserver on port %v, talking to clamd via %v", port, clamd_address)
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", port))
 	if err != nil {
 		return err

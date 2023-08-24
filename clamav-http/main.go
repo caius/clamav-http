@@ -31,7 +31,10 @@ func main() {
 	flag.Parse()
 	logger := newLogger()
 
-	server.RunHTTPListener(
+	err := server.RunHTTPListener(
 		fmt.Sprintf("tcp://%v:%d", *host, *port),
 		*listenPort, *maxFileMem, logger)
+	if err != nil {
+		logger.Fatalf("Server failed: %s", err)
+	}
 }
